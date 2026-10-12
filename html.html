@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <script src="script.js" defer></script>
+    <main class="calculator-app">
+        <aside class="function-panel" aria-label="Scientific functions">
+            <!-- Logo placeholder: reserved 50px by 20px above the function menus. -->
+            <div class="logo-placeholder" aria-label="Logo space"></div>
+
+            <!-- Standard arithmetic functions dropdown. -->
+            <label class="function-group">Miscellaneous functions
+                <select aria-label="Miscellaneous functions">
+                    <option selected disabled>Choose a function</option>
+                    <option value="percent">Percent (%)</option>
+                    <option value="reciprocal">Reciprocal (1/x)</option>
+                    <option value="absolute">Absolute value |x|</option>
+                    <option value="factorial">Factorial (x!)</option>
+                </select>
+            </label>
+
+            <!-- Trigonometric functions dropdown. -->
+            <label class="function-group">Trigonometric
+                <select aria-label="Trigonometric functions">
+                    <option selected disabled>Choose a function</option>
+                    <option value="sin">sin(x)</option>
+                    <option value="cos">cos(x)</option>
+                    <option value="tan">tan(x)</option>
+                </select>
+            </label>
+
+            <!-- Inverse trigonometric functions dropdown. -->
+            <label class="function-group">Inverse trigonometric
+                <select aria-label="Inverse trigonometric functions">
+                    <option selected disabled>Choose a function</option>
+                    <option value="asin">sin⁻¹(x)</option><option value="acos">cos⁻¹(x)</option><option value="atan">tan⁻¹(x)</option>
+                </select>
+            </label>
+
+            <!-- Powers dropdown with square, cube, and arbitrary exponent. -->
+            <label class="function-group">Powers
+                <select aria-label="Power functions">
+                    <option selected disabled>Choose a function</option>
+                    <option value="square">x²</option><option value="cube">x³</option><option value="power">xʸ</option>
+                </select>
+            </label>
+
+            <!-- Logarithm functions dropdown. -->
+            <label class="function-group">Logarithms
+                <select aria-label="Logarithm functions">
+                    <option selected disabled>Choose a function</option>
+                    <option value="log10">log₁₀(x)</option><option value="log2">log₂(x)</option><option value="ln">ln(x)</option>
+                </select>
+            </label>
+
+            <!-- Exponential functions dropdown. -->
+            <label class="function-group">Exponential
+                <select aria-label="Exponential functions">
+                    <option selected disabled>Choose a function</option>
+                    <option value="two-power">2ˣ</option><option value="ten-power">10ˣ</option><option value="e-power">eˣ</option>
+                </select>
+            </label>
+
+            <!-- Mathematical constants dropdown. -->
+            <label class="function-group">Constants
+                <select aria-label="Mathematical constants">
+                    <option selected disabled>Choose a constant</option>
+                    <option value="pi">π (pi)</option><option value="e">e (Euler's number)</option><option value="phi">φ (golden ratio)</option>
+                </select>
+            </label>
+        </aside>
+
+        <!-- Display and keypad form the responsive calculator area on the right. -->
+        <section class="calculator-workspace" aria-label="Calculator">
+            <!-- Dark output window for the current expression or result. -->
+            <output class="display" aria-label="Calculator output">0</output>
+            <!-- Equals button sits above the keypad at the right edge. -->
+            <button class="equals-button" type="button" aria-label="Equals">=</button>
+            <!-- Responsive four-column calculator keypad. -->
+            <div class="keypad" aria-label="Calculator keypad">
+                <button type="button">AC</button><button type="button">(</button><button type="button">)</button><button type="button">÷</button>
+                <button type="button">7</button><button type="button">8</button><button type="button">9</button><button type="button">×</button>
+                <button type="button">4</button><button type="button">5</button><button type="button">6</button><button type="button">−</button>
+                <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">+</button>
+                <button type="button" class="zero-key">0</button><button type="button">.</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,169 @@
+/* Base sizing and colors for the calculator application. */
+:root {
+    color-scheme: dark;
+    font-family: Inter, "Segoe UI", sans-serif;
+    background: #11131a;
+    color: #f4f5f8;
+    font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+
+/* Center the bordered application and allow it to scale with the viewport. */
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: clamp(10px, 2vw, 28px);
+    display: grid;
+    place-items: center;
+    background: #944b03;
+}
+
+/* Outer application border and two-column responsive layout. */
+.calculator-app {
+    width: min(100%, 1440px);
+    min-height: min(86vh, 900px);
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) minmax(0, 1.86fr);
+    gap: clamp(14px, 2vw, 28px);
+    padding: clamp(14px, 2vw, 28px);
+    border: 2px solid #596174;
+    border-radius: 20px;
+    background: #462d18;
+    box-shadow: 0 24px 70px #0008;
+}
+
+/* Left panel holds the logo reserve and function menus. */
+.function-panel {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 6px;
+}
+
+/* Requested 50px-wide by 20px-high logo area. */
+.logo-placeholder { width: 50px; height: 20px; flex: 0 0 20px; margin-bottom: 6px; }
+
+
+/* Function labels */
+.function-group {
+    display: grid;
+    gap: 7px;
+    color: #c6ccda;
+    font-size: .88rem;
+    font-weight: 600;
+}
+
+/* Dropdown appearance */
+.function-group select {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 38px 0 12px;
+
+    border: 1px solid #444b5d;
+    border-radius: 9px;
+
+    background-color: #252a37;
+    color: #f4f5f8;
+    font: inherit;
+
+    cursor: pointer;
+    outline: none;
+
+    /* Custom dropdown arrow */
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23c6ccda' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+
+    transition:
+        background-color 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+/* Subtle hover feedback */
+.function-group select:hover {
+    background-color: #2d3343;
+    border-color: #948d73;
+}
+
+/* Keyboard focus and click-to-focus */
+.function-group select:focus {
+    border-color: #ffc26c;
+    box-shadow: 0 0 0 3px #ffba6c33;
+}
+
+/* Highlight the selected option where supported */
+.function-group select option {
+    background-color: #252a37;
+    color: #f4f5f8;
+}
+
+/* Clear disabled placeholder styling */
+.function-group select option:disabled {
+    color: #858da1;
+}
+
+
+/* Right-side calculator is bottom-aligned and uses the available grid column. */
+.calculator-workspace {
+    width: 100%; min-width: 0; min-height: 0;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    align-self: end; gap: 12px;
+}
+
+/* Dark, high-contrast output window. */
+.display {
+    min-height: clamp(90px, 17vh, 160px); display: flex;
+    align-items: flex-end; justify-content: flex-end; overflow: hidden;
+    padding: 20px; border: 1px solid #343b4c; border-radius: 14px;
+    background: #0f0b08; color: #f7f8fc;
+    font-size: clamp(2rem, 5vw, 3.5rem); font-variant-numeric: tabular-nums;
+}
+
+/* Equals button is above the keypad and aligned to the window's right edge. */
+.equals-button {
+    width: min(25%, 150px); min-width: 90px; min-height: 58px; align-self: flex-end;
+    border: 0; border-radius: 12px; background: #c49f51; color: white;
+    font-size: 1.8rem; font-weight: 700; cursor: pointer;
+}
+
+/* Four-column keypad spans 65% of the application width on desktop. */
+.keypad {
+    width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: clamp(54px, 9vh, 84px); gap: clamp(8px, 1.2vw, 14px);
+}
+
+/* Touch-friendly keys with a consistent dark palette. */
+.keypad button {
+    min-width: 0; border: 1px solid #383e4d; border-radius: 12px;
+    background: #2a2f3b; color: #f3f4f8; font: inherit;
+    font-size: clamp(1.1rem, 2vw, 1.5rem); cursor: pointer;
+    transition: background-color 120ms ease, transform 120ms ease;
+}
+
+/* Hover and focus styling make the active control clear. */
+.keypad button:hover, .keypad button:focus-visible, .equals-button:hover, .equals-button:focus-visible {
+    background: #786b42; outline: 2px solid #d2b387; outline-offset: 2px;
+}
+.keypad button:active, .equals-button:active { transform: scale(.97); }
+
+/* Zero spans two keypad columns. */
+.keypad .zero-key { grid-column: span 2; }
+
+/* On narrow screens, stack menus above the full-width calculator. */
+@media (max-width: 720px) {
+    .calculator-app { min-height: 0; grid-template-columns: minmax(0, 1fr); }
+    .function-panel { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .logo-placeholder { grid-column: 1 / -1; }
+    .calculator-workspace { align-self: stretch; }
+    .keypad { grid-auto-rows: clamp(52px, 10vw, 74px); }
+}
+
+/* Small phones use one menu column to keep dropdowns readable. */
+@media (max-width: 420px) {
+    .function-panel { grid-template-columns: minmax(0, 1fr); }
+    .logo-placeholder { grid-column: auto; }
+}
