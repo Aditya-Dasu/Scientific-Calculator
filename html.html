@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scientific Calculator</title>
     <link rel="stylesheet" href="style.css">
-    
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <script src="script.js" defer></script>
+    
     <main class="calculator-app">
         <aside class="function-panel" aria-label="Scientific functions">
             <!-- Logo placeholder: reserved 50px by 20px above the function menus. -->
@@ -84,11 +84,29 @@
             <button class="equals-button" type="button" aria-label="Equals">=</button>
             <!-- Responsive four-column calculator keypad. -->
             <div class="keypad" aria-label="Calculator keypad">
-                <button type="button">AC</button><button type="button">(</button><button type="button">)</button><button type="button">÷</button>
-                <button type="button">7</button><button type="button">8</button><button type="button">9</button><button type="button">×</button>
-                <button type="button">4</button><button type="button">5</button><button type="button">6</button><button type="button">−</button>
-                <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">+</button>
-                <button type="button" class="zero-key">0</button><button type="button">.</button>
+
+<button type="button" class="control" data-value="AC">AC</button>
+<button type="button" class="bracket" data-value="(">(</button>
+<button type="button" class="bracket" data-value=")">)</button>
+<button type="button" class="operator" data-value="/">÷</button>
+
+<button type="button" class="number" data-value="7">7</button>
+<button type="button" class="number" data-value="8">8</button>
+<button type="button" class="number" data-value="9">9</button>
+<button type="button" class="operator" data-value="*">X</button>
+
+<button type="button" class="number" data-value="4">4</button>
+<button type="button" class="number" data-value="5">5</button>
+<button type="button" class="number" data-value="6">6</button>
+<button type="button" class="operator" data-value="-">_</button>
+
+<button type="button" class="number" data-value="1">1</button>
+<button type="button" class="number" data-value="2">2</button>
+<button type="button" class="number" data-value="3">3</button>
+<button type="button" class="operator" data-value="+">+</button>
+
+<button type="button" class="number zero-key" data-value="0">0</button>
+<button type="button" class="number decimal" data-value=".">.</button>
             </div>
         </section>
     </main>
